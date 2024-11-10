@@ -8,29 +8,87 @@
 import XCTest
 @testable import CodeRetreat2024V2
 
-final class CodeRetreat2024V2Tests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+final class CellIsDeadTests: XCTestCase {
+    
+    private var cell: Cell!
+    
+    override func setUp() {
+        super.setUp()
+        cell = Cell()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    override func tearDown() {
+        cell = nil
+        super.tearDown()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func test_CellDeadWithZeroOneOrTwoNeighbourRemainDead() {
+        cell.switchState(numberOfNeighbours: 0)
+        XCTAssertFalse(cell.isAlive)
+        cell.switchState(numberOfNeighbours: 1)
+        XCTAssertFalse(cell.isAlive)
+        cell.switchState(numberOfNeighbours: 2)
+        XCTAssertFalse(cell.isAlive)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func test_CellDeadWithThreeNeighbourChangeToAlive() {
+        cell.switchState(numberOfNeighbours: 3)
+        XCTAssert(cell.isAlive)
     }
+    
+    func test_CellDeadWithFourOrMoreNeighbourStillDeadAndRemainDead() {
+        cell.switchState(numberOfNeighbours: 4)
+        XCTAssertFalse(cell.isAlive)
+        cell.switchState(numberOfNeighbours: 5)
+        XCTAssertFalse(cell.isAlive)
+        cell.switchState(numberOfNeighbours: 6)
+        XCTAssertFalse(cell.isAlive)
+        cell.switchState(numberOfNeighbours: 7)
+        XCTAssertFalse(cell.isAlive)
+        cell.switchState(numberOfNeighbours: 8)
+        XCTAssertFalse(cell.isAlive)
+    }
+}
 
+final class CellIsAliveTests: XCTestCase {
+    
+    private var cell: Cell!
+    
+    override func setUp() {
+        super.setUp()
+        cell = Cell()
+        cell.switchState(numberOfNeighbours: 3)
+    }
+    
+    override func tearDown() {
+        cell = nil
+        super.tearDown()
+    }
+    
+    func test_CellAliveWithZeroOrOneNeighbourShouldDeadOrRemainDead() {
+        cell.switchState(numberOfNeighbours: 0)
+        XCTAssertFalse(cell.isAlive)
+        cell.switchState(numberOfNeighbours: 1)
+        XCTAssertFalse(cell.isAlive)
+    }
+    
+    func test_CellAliveWithTwoOrThreeNeighbourRemainAlive() {
+        cell.switchState(numberOfNeighbours: 2)
+        XCTAssert(cell.isAlive)
+        cell.switchState(numberOfNeighbours: 3)
+        XCTAssert(cell.isAlive)
+    }
+    
+    func test_CellAliveWithFourOrMoreNeighbourShouldDeadOrRemainDed() {
+        cell.switchState(numberOfNeighbours: 4)
+        XCTAssertFalse(cell.isAlive)
+        cell.switchState(numberOfNeighbours: 5)
+        XCTAssertFalse(cell.isAlive)
+        cell.switchState(numberOfNeighbours: 6)
+        XCTAssertFalse(cell.isAlive)
+        cell.switchState(numberOfNeighbours: 7)
+        XCTAssertFalse(cell.isAlive)
+        cell.switchState(numberOfNeighbours: 8)
+        XCTAssertFalse(cell.isAlive)
+    }
 }

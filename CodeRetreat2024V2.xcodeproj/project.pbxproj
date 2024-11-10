@@ -25,22 +25,9 @@
 		EB5278D32CDF76AC00CBBFF6 /* CodeRetreat2024V2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodeRetreat2024V2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		EB5278DB2CDF76AC00CBBFF6 /* Exceptions for "CodeRetreat2024V2" folder in "CodeRetreat2024V2" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			publicHeaders = (
-				CodeRetreat2024V2.h,
-			);
-			target = EB5278C82CDF76AC00CBBFF6 /* CodeRetreat2024V2 */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		EB5278CB2CDF76AC00CBBFF6 /* CodeRetreat2024V2 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				EB5278DB2CDF76AC00CBBFF6 /* Exceptions for "CodeRetreat2024V2" folder in "CodeRetreat2024V2" target */,
-			);
 			path = CodeRetreat2024V2;
 			sourceTree = "<group>";
 		};
